@@ -1,4 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
 * {
     margin:0;
     padding:0;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: medium;
 }
+
+body {
+    background-image: url('pxfuel.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  
+.sign-in-input-group{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32vh;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-in-input-group input {
+margin-bottom: 2vh;}
+
+
+input::placeholder {
+    text-align: center;
+}
+
+.register{
+    display: flex; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    padding: 2vh 2vw;
+    background-image: url('pixel-red.webp');    
+    background-size: cover;
+    color: white;
+    border: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+  
