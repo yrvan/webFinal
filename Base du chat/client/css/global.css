@@ -31,6 +31,10 @@ body {
     flex-direction: column; 
 }
 
+input{
+    background-image: url('bois.jpg');
+    border: transparent ;
+}
 #chat{
     margin-left: auto;
     margin-right: auto;
@@ -41,9 +45,18 @@ body {
 }
 
 .sign-in-input-group input{
-    margin-bottom: 2vh;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
 }
 
+#api-message{
+    text-align: center;
+    margin-left: 35%;
+    color: red;
+    background-image: url('parchemin1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
 .flexing input {
     margin-bottom: 5vh;
@@ -51,16 +64,21 @@ body {
 
 input::placeholder {
     text-align: center;
+    
 }
 
+textarea{
+    background-image: url('bois.jpg');
+    max-height: 35vh;
+}
 
-
-.register, #sign-out-btn{
+.register, #sign-out-btn, .sign-in-input-group button{
     display: flex; 
     margin-left: auto;
     margin-right: auto;
     padding: 2vh 2vw;   
     background-size: cover;
+    background-repeat: no-repeat;
     color: white;
     border: transparent;
     border-radius: 10px;
@@ -90,5 +108,15 @@ input::placeholder {
     margin-top: 15vh;
 }
 
-
+.sign-in-input-group button{
+    background-image: url('full.jpeg');
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
   
+
+.sign-in-input-group button:hover{
+    background-image: url('bois.jpg');
+    background-size: cover;
+
+}
