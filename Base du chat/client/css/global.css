@@ -28,6 +28,9 @@ input::placeholder {
 textarea{
     background-image: url('bois.jpg');
     max-height: 35vh;
+    padding: 10px;
+    /*text-size-adjust:;*/
+
 }
 
 
@@ -73,17 +76,12 @@ textarea{
     visibility: hidden;
 }
 
-
-
-.flexing{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20vh;
-    width: 25%;
-    display: flex;
-    flex-direction: column; 
+#username{
+    position: absolute;
+    left: 45%;
+    top: 25%;
+    font-size: larger;
 }
-
 
 #chat{
     margin-left: auto;
@@ -92,7 +90,16 @@ textarea{
     width: 30%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.flexing{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20vh;
+    width: 25%;
+    display: flex;
+    flex-direction: column; 
 }
 
 .flexing input {
@@ -133,8 +140,12 @@ textarea{
 #sign-out-btn{
     background-image: url('stone.jpg');
     margin-top: 15vh;
+    transition: background-image 3s linear;
 }
 
+#sign-out-btn:hover{
+    background-image: url('cobble.jpg');
+}
 
   
 
