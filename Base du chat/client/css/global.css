@@ -8,11 +8,30 @@
 
 body {
     background-image: url('pxfuel.jpg');
-    background-size: cover;
     background-repeat: no-repeat;
-    position: relative;
+    background-size: 100% 100%;
+    width: 100vw;
+    height: 80dvh;
+    background-position: bottom;
+    overflow: hidden;
   }
-  
+
+input{
+    background-image: url('bois.jpg');
+    border: transparent ;
+}
+
+input::placeholder {
+    text-align: center;
+}
+
+textarea{
+    background-image: url('bois.jpg');
+    max-height: 35vh;
+}
+
+
+
 .sign-in-input-group{
     margin-left: auto;
     margin-right: auto;
@@ -20,7 +39,41 @@ body {
     width: 25%;
     display: flex;
     flex-direction: column;
+    align-items:center;
+    align-content: space-between ;
 }
+
+.sign-in-input-group input{
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+    width: 80%;
+}
+
+.sign-in-input-group button{
+    background-image: url('full.jpeg');
+    margin: 5vh 0;
+    padding: 2vh 2vw;   
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    border: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.sign-in-input-group button:hover{
+    background-image: url('bois.jpg');
+    background-size: cover;
+
+}
+
+#api-message{
+    text-align: center;
+    color: red;
+    visibility: hidden;
+}
+
+
 
 .flexing{
     margin-left: auto;
@@ -31,10 +84,7 @@ body {
     flex-direction: column; 
 }
 
-input{
-    background-image: url('bois.jpg');
-    border: transparent ;
-}
+
 #chat{
     margin-left: auto;
     margin-right: auto;
@@ -42,37 +92,14 @@ input{
     width: 30%;
     display: flex;
     flex-direction: row;
-}
-
-.sign-in-input-group input{
-    margin-bottom: 3vh;
-    margin-top: 3vh;
-}
-
-#api-message{
-    text-align: center;
-    margin-left: 35%;
-    color: red;
-    background-image: url('parchemin1.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    justify-content: space-between;
 }
 
 .flexing input {
     margin-bottom: 5vh;
 }
 
-input::placeholder {
-    text-align: center;
-    
-}
-
-textarea{
-    background-image: url('bois.jpg');
-    max-height: 35vh;
-}
-
-.register, #sign-out-btn, .sign-in-input-group button{
+.register, #sign-out-btn{
     display: flex; 
     margin-left: auto;
     margin-right: auto;
@@ -108,15 +135,7 @@ textarea{
     margin-top: 15vh;
 }
 
-.sign-in-input-group button{
-    background-image: url('full.jpeg');
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-}
+
   
 
-.sign-in-input-group button:hover{
-    background-image: url('bois.jpg');
-    background-size: cover;
 
-}
