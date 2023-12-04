@@ -7,6 +7,24 @@ window.addEventListener("load", () => {
     document.querySelector("#sign-out-btn").onclick = signout;
     registerCallbacks(newMessage, memberListUpdate);
     chatMessageLoop();
+
+    let textareaNode = document.querySelector("textarea");
+  
+    textareaNode.onfocus = function () {
+      this.value = "Moi: ";
+    }
+  
+    textareaNode.onkeydown = function () {
+      if (this.value.length < 5) {
+        this.value = "Moi: ";
+      }
+    }
+  
+    textareaNode.onblur = function () {
+      this.value = "";
+    }
+
+    tick()
 })
 
 // Lorsqu'un nouveau message doit être affiché à l'écran, cette fonction est appelée
@@ -19,3 +37,15 @@ const newMessage = (fromUser, message, isPrivate) => {
 const memberListUpdate = members => {
     console.log(members);
 }
+
+
+
+const tick = () =>{
+  
+    let textareaNode = document.querySelector("textarea");
+  
+    textareaNode.style.fontSize = textareaNode.offsetWidth /23 + "px"
+  
+    window.requestAnimationFrame(tick)
+  
+  }

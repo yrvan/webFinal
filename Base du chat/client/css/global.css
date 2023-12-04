@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+
 * {
     margin:0;
     padding:0;
@@ -7,33 +8,32 @@
 }
 
 body {
-    background-image: url('pxfuel.jpg');
+    background-image: url('background/pxfuel.jpg');
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: cover;
     width: 100vw;
-    height: 80dvh;
+    height: 85dvh;
     background-position: bottom;
     overflow: hidden;
-  }
+}
 
 input{
-    background-image: url('bois.jpg');
+    background-image: url('background/bois.jpg');
     border: transparent ;
 }
 
 input::placeholder {
     text-align: center;
+    color: black;
 }
 
 textarea{
-    background-image: url('bois.jpg');
+    background-image: url('background/bois.jpg');
+    width: 50%;
     max-height: 35vh;
-    padding: 10px;
-    /*text-size-adjust:;*/
+    padding: 1%;
 
 }
-
-
 
 .sign-in-input-group{
     margin-left: auto;
@@ -53,7 +53,7 @@ textarea{
 }
 
 .sign-in-input-group button{
-    background-image: url('full.jpeg');
+    background-image: url('background/full.jpeg');
     margin: 5vh 0;
     padding: 2vh 2vw;   
     background-size: cover;
@@ -65,7 +65,7 @@ textarea{
 }
 
 .sign-in-input-group button:hover{
-    background-image: url('bois.jpg');
+    background-image: url('background/bois.jpg');
     background-size: cover;
 
 }
@@ -76,11 +76,17 @@ textarea{
     visibility: hidden;
 }
 
-#username{
-    position: absolute;
-    left: 45%;
-    top: 25%;
-    font-size: larger;
+.register, #sign-out-btn{
+    display: flex; 
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2vh 2vw;   
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    border: transparent;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 #chat{
@@ -106,47 +112,21 @@ textarea{
     margin-bottom: 5vh;
 }
 
-.register, #sign-out-btn{
-    display: flex; 
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2vh 2vw;   
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: white;
-    border: transparent;
-    border-radius: 10px;
-    cursor: pointer;
+.flexing #api-message{
+    margin-bottom: 2vh;
 }
+
 
 .register#reg1{
     margin-top: 5vh;
-    background-image: url('rouge.jpg');
+    background-image: url('background/rouge.jpg');
 }
 
 .register#reg1:hover{
-    background-image: url('pixel-green.jpg');
-}
-
-.register#reg2{
-    margin-top: 5vh;
-    background-image: url('bleu.jpg'); 
-}
-
-.register#reg2:hover{
-    background-image: url('pixel-green.jpg');
+    background-image: url('background/pixel-green.jpg');
 }
 
 #sign-out-btn{
-    background-image: url('stone.jpg');
+    background-image: url('background/stone.jpg');
     margin-top: 15vh;
-    transition: background-image 3s linear;
 }
-
-#sign-out-btn:hover{
-    background-image: url('cobble.jpg');
-}
-
-  
-
-
