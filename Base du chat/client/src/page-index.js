@@ -8,8 +8,6 @@ window.addEventListener("load", () => {
     document.querySelector(".register").onclick = () => {
         window.location.href = 'register.html';
       }
-      
-      
 
       tick()
 });

@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
     registerCallbacks(newMessage, memberListUpdate);
     chatMessageLoop();
 
-    let textareaNode = document.querySelector("textarea");
+    let textareaNode = document.querySelector("#chat-enter");
   
     textareaNode.onfocus = function () {
       this.value = "Moi: ";
@@ -29,6 +29,16 @@ window.addEventListener("load", () => {
 
 // Lorsqu'un nouveau message doit être affiché à l'écran, cette fonction est appelée
 const newMessage = (fromUser, message, isPrivate) => {
+    let divNODE = document.createElement("div");
+    divNODE.classList.add("message");
+
+    divNODE.innerHTML = '<span style="color:' + couleurAleatoire()+ '; font-size: calc(10px + 0.5vw);">'+ fromUser + '</span>'+' : '+message;
+
+    let chatSpaceNode = document.querySelector("#chat-space");
+    chatSpaceNode.append(divNODE);
+
+    chatSpaceNode.scrollTop = chatSpaceNode.scrollHeight;
+
     console.log(fromUser, message, isPrivate);
 }
 
@@ -43,9 +53,16 @@ const memberListUpdate = members => {
 const tick = () =>{
   
     let textareaNode = document.querySelector("textarea");
-  
+
     textareaNode.style.fontSize = textareaNode.offsetWidth /23 + "px"
-  
-    window.requestAnimationFrame(tick)
-  
+
+    requestAnimationFrame(tick);
+
   }
+
+  const couleurAleatoire = () => {
+    var rouge = Math.floor(Math.random() * 256);
+    var vert = Math.floor(Math.random() * 256);
+    var bleu = Math.floor(Math.random() * 256);
+    return 'rgb(' + rouge + ',' + vert + ',' + bleu + ')';
+}

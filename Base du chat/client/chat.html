@@ -8,13 +8,17 @@
         <script src="dist/chat.js"></script>
         <link rel="icon" href="img/favicon.png" type="image/png" />
     </head>
-    <body>
-		<div id="vue-container"></div>
+    <body id="chatPage">
+		<div class="gros-div">
+            <div id="vue-container"></div>
 
-        <div id="chat">
-            <textarea cols="30" rows="10"></textarea>
-            <div id="member-list">ok</div>
+            <div id="chat">
+                <div id = "chat-space">          
+                </div>
+                
+                <textarea id="chat-enter" cols="30" rows="10"></textarea>
+            </div>
+            <button id="sign-out-btn">Déconnexion</button>
         </div>
-        <button id="sign-out-btn">Déconnexion</button>
     </body>
 </html>
