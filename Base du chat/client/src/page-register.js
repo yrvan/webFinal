@@ -5,6 +5,9 @@ window.addEventListener("load", () => {
         return register(this);
     }
 
+    document.querySelector("#LOG").onclick =() =>{
+        window.location.href="index.html";
+    }
 
     tick();
     

@@ -16,10 +16,7 @@ body {
     background-position: bottom;
     overflow: hidden;
 }
-#chatPage{
-    height: 95dvh;
 
-}
 
 :root{
     --background-button: #222222;
@@ -37,11 +34,11 @@ input::placeholder {
 
 #chat-enter{
     background-image: url('background/bois.jpg');
-    width: 50%;
-    max-height: 15vh;
+    width: 75%;
+    max-height: 20vh;
     padding: 1%;
     max-width: 30vw;
-
+    border:transparent;
 }
 
 .sign-in-input-group{
@@ -61,7 +58,7 @@ input::placeholder {
     width: 80%;
 }
 
-.sign-in-input-group button{
+#login{
     background-image: url('background/full.jpeg');
     margin: 5vh 0;
     padding: 2vh 2vw;   
@@ -73,7 +70,7 @@ input::placeholder {
     cursor: pointer;
 }
 
-.sign-in-input-group button:hover{
+#login:hover{
     background-image: url('background/bois.jpg');
     background-size: cover;
 
@@ -85,7 +82,7 @@ input::placeholder {
     visibility: hidden;
 }
 
-.register, #sign-out-btn{
+.register{
     display: flex; 
     margin-left: auto;
     margin-right: auto;
@@ -98,31 +95,60 @@ input::placeholder {
     cursor: pointer;
 }
 
+#chatPage{
+    height: 105dvh;
+
+}
+
 #chat{
     margin-left: auto;
     margin-right: auto;
-    margin-top: 15vh;
+    margin-top: 10vh;
     width: 30%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
+}
+
+
+#space{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: auto;
+    margin-right: 35vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#member-space{
+    background-color: hsla(0, 0%, 0%, 0.3);
+    width: 20vw;
+    height: 35vh;
+    padding: 1%;
+    margin-left: 5vw;
+    word-wrap: break-word;
+    overflow-y:scroll;
+}
+#member-space::-webkit-scrollbar{
+     width: 0.8vw;
+}
+#member-space::-webkit-scrollbar-thumb{
+     background-color: var(--background-button);
 }
 
 #chat-space{
     background-color: hsla(0, 0%, 0%, 0.3);    
     width: 30vw;
     height: 35vh;
-    margin-bottom: 5vh;
+    margin-bottom: 8vh;
     padding: 1%;
     overflow-y:scroll;
 }
-#chat-space::-webkit-scrollbar,
-.afficher-message::-webkit-scrollbar{
+#chat-space::-webkit-scrollbar{
      width: 0.4vw;
 }
-#chat-space::-webkit-scrollbar-thumb,
-.afficher-message::-webkit-scrollbar-thumb{
+#chat-space::-webkit-scrollbar-thumb{
      background-color: var(--background-button);
 }
 .message{
@@ -130,6 +156,11 @@ input::placeholder {
     width: 100%;
     overflow-wrap: break-word;
    
+}
+
+.member{
+    font-size: calc(10px + 0.5vw);
+    width: 100%;
 }
 
 .flexing{
@@ -160,6 +191,34 @@ input::placeholder {
 }
 
 #sign-out-btn{
+    position: absolute;
+    left: 2vw;
+    top: 2vh;
+    padding: 2vh 2vw;   
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    border: transparent;
+    border-radius: 10px;
+    cursor: pointer;
     background-image: url('background/stone.jpg');
-    margin-top: 15vh;
+}
+
+#LOG{
+    position: absolute;
+    left: 2vw;
+    top: 2vh;
+    padding: 2vh 2vw;   
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    border: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    background-image: url('background/stone.jpg');
+}
+
+#username{
+    font-size: calc(10px + 0.9vw);
+    margin-bottom: 5vh;
 }
