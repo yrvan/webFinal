@@ -50,6 +50,14 @@ const newMessage = (fromUser, message, isPrivate) => {
   let couleursMembres = localStorage.getItem("couleursMembres").split(";");
   let couleur = "black";
 
+  if (message.includes('/new_color')){
+    let newCouleursMembres;
+    for (let couleurMembre of couleursMembres){
+      newCouleursMembres += couleurMembre.split(':')[0] +':'+couleurAleatoire()+';';
+    }
+    localStorage.setItem("couleursMembres",newCouleursMembres)
+  }
+
   for (let couleurMembre of couleursMembres){
     if (couleurMembre.includes(fromUser)){
         couleur = couleurMembre.split(':')[1];

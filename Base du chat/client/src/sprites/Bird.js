@@ -76,7 +76,7 @@ export default class Bird{
                 
                 if(this.y != y){
                     clearTimeout(this.autoStabilization);
-                    this.autoStabilization = setTimeout(()=>{this.node.style.transform = this.direction+this.sens["stable"];}, 1000);
+                    this.autoStabilization = setTimeout(()=>{this.node.style.transform = this.direction+this.sens["stable"];}, 500);
 
                     if (y >=5 && y <= window.innerHeight-30){
                         if (y < this.y){

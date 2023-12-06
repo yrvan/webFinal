@@ -9,7 +9,9 @@ page de chat:
 caracteristque chat:
 -chat
     -chaque membre possende une couleur aleatoire(donc 2 membres peuvent avoir la meme couleur mais tres peux de chance)
-    -cette couleur s'affiche que sur le nom du membres
+    -cette couleur s'affiche que sur le nom du membres lors de l'envoie de son message
+    -/new_color pour changer la couleur de tous les membres
+
 -lste de membres
     -les membres connecté aparaissent avec leurs couleurs
     -tandis que les membres qui etait connecté apparaissent en noir dans la categorie membres offlines
