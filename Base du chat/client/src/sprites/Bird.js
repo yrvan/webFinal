@@ -38,8 +38,6 @@ export default class Bird{
         document.onkeydown = (event) =>{
             let x = this.x;
             let y = this.y;
-
-            let transform = this.node.style.transform;
             if(this.isFlying){
                 if (event.key ==="ArrowLeft"){
                     x -= this.vitesse;
@@ -97,10 +95,6 @@ export default class Bird{
                         this.y = y;
                         
                     }
-                }
-                
-                if(this.node.style.transform.includes(this.sens["droite"])){
-                    console.log(667);
                 }
                 
             }

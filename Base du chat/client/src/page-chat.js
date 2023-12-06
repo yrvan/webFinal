@@ -134,6 +134,17 @@ const couleurAleatoire = () => {
   return 'rgb(' + rouge + ',' + vert + ',' + bleu + ')';
 }
 
+const collision = (element1, element2, distance) => {
+  const rect1 = element1.getBoundingClientRect();
+  const rect2 = element2.getBoundingClientRect();
+
+  return !(
+      rect1.right < rect2.left - distance ||
+      rect1.left > rect2.right + distance ||
+      rect1.bottom < rect2.top - distance ||
+      rect1.top > rect2.bottom + distance
+  );
+}
 
 const tick = () =>{
 
@@ -141,6 +152,10 @@ const tick = () =>{
         bird.color = Bird.RED_BIRD;
       }else{
         bird.color = Bird.BLUE_BIRD;
+      }
+
+      if (collision(bird.node, firecamp.node,-53)) {
+        console.log("Le bird touche le firecamp");
       }
 
     textareaNode.style.fontSize = textareaNode.offsetWidth /23 + "px"
