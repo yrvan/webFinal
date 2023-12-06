@@ -35,20 +35,24 @@ export default class Bird{
         this.node.classList.add('bird');
         document.body.append(node);
 
-        document.onkeydown = (event) =>{
-            let x = this.x;
+        document.onkeydown = (event) =>{this.move(event.key)}
+    }
+        
+
+    move(key){
+        let x = this.x;
             let y = this.y;
             if(this.isFlying){
-                if (event.key ==="ArrowLeft"){
+                if (key ==="ArrowLeft"){
                     x -= this.vitesse;
                 }
-                else if (event.key == "ArrowRight"){
+                else if (key == "ArrowRight"){
                     x += this.vitesse;
                 }
-                else if (event.key == "ArrowUp"){
+                else if (key == "ArrowUp"){
                     y -= this.vitesse;
                 }
-                else if (event.key == "ArrowDown"){
+                else if (key == "ArrowDown"){
                     y += this.vitesse;
                 }
 
@@ -98,9 +102,7 @@ export default class Bird{
                 }
                 
             }
-        }
     }
-        
 
     tick(){
 

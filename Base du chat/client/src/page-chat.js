@@ -48,27 +48,26 @@ window.addEventListener("load", () => {
 const newMessage = (fromUser, message, isPrivate) => {
 
   let couleursMembres = localStorage.getItem("couleursMembres").split(";");
-  let couleur = "dark";
+  let couleur = "black";
 
   for (let couleurMembre of couleursMembres){
-    let couleur_Membre = couleurMembre.split(':');
-    if (couleur_Membre[0] === fromUser){
-        couleur = couleur_Membre[1];
+    if (couleurMembre.includes(fromUser)){
+        couleur = couleurMembre.split(':')[1];
     }
-  } 
-    let divNODE = document.createElement("div");
-    divNODE.classList.add("message");
-    if (fromUser == localStorage.getItem("username")){
-      let username = localStorage.getItem("username") + ": ";
-      message = message.substring(username.length);
-    }
-    divNODE.style.fontSize = "calc(10px + 0.5vw)";
-    divNODE.innerHTML = '<span style="color:' + couleur+ '; font-size: calc(10px + 0.5vw);">'+ fromUser + '</span>'+' : '+message;
+  }
+  let divNODE = document.createElement("div");
+  divNODE.classList.add("message");
+  if (fromUser == localStorage.getItem("username")){
+    let username = localStorage.getItem("username") + ": ";
+    message = message.substring(username.length);
+  }
+  divNODE.style.fontSize = "calc(10px + 0.5vw)";
+  divNODE.innerHTML = '<span style="color:' + couleur+ '; font-size: calc(10px + 0.5vw);">'+ fromUser + '</span>'+' : '+message;
 
-    let chatSpaceNode = document.querySelector("#chat-space");
-    chatSpaceNode.append(divNODE);
+  let chatSpaceNode = document.querySelector("#chat-space");
+  chatSpaceNode.append(divNODE);
 
-    chatSpaceNode.scrollTop = chatSpaceNode.scrollHeight;
+  chatSpaceNode.scrollTop = chatSpaceNode.scrollHeight;
 
 
   let memberlistNode = document.querySelector("#member-space")
@@ -106,12 +105,12 @@ for (let memberdiv of memberSpaceNode){
 let couleur;
 couleursMembres = localStorage.getItem("couleursMembres").split(";");
 
+
 for (let member of connectedMembers){
   
   for (let couleurMembre of couleursMembres){
-    let couleur_Membre = couleurMembre.split(':');
-    if (couleur_Membre[0] === member){
-        couleur = couleur_Membre[1];
+    if (couleurMembre.includes(member)){
+        couleur = couleurMembre.split(':')[1];
     }
   }
       let divNode = document.createElement("div");
@@ -122,6 +121,24 @@ for (let member of connectedMembers){
       document.querySelector("#member-space").append(divNode); 
 }
 
+let memberOffline = false;
+for (let member of members_list) {
+  if (!connectedMembers.includes(member)) {
+      if(!memberOffline){
+        memberOffline=true;
+        let divNode = document.createElement("div");
+        divNode.classList.add("member");
+        divNode.style.fontSize = "calc(10px + 0.5vw)";
+        divNode.innerHTML = "Membres Offline :";
+        document.querySelector("#member-space").append(divNode); 
+      }
+      let divNode = document.createElement("div");
+      divNode.classList.add("member");
+      divNode.style.fontSize = "calc(10px + 0.5vw)";
+      divNode.innerHTML = member;
+      document.querySelector("#member-space").append(divNode); 
+  }
+}
   console.log(localStorage);
   console.log(members);
 }
