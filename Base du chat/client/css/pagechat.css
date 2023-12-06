@@ -5,19 +5,17 @@
     background-size: contain;
     position: absolute;
     left: 80vw;
-    width: 7vw;
+    width: 10vw;
     aspect-ratio: 1;
-    bottom: 3%;
+    bottom: 1%;
     cursor: pointer;
     padding: -10%;
 }
 
 .bird{
-    background-image: url('spritesheet/yellowBirdFrame/frame0.png');
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
-    left: 50vw;
     width:2vw;
     aspect-ratio: 1;
     cursor: pointer;
