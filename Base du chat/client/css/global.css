@@ -38,6 +38,7 @@ input::placeholder {
     max-height: 20vh;
     padding: 1%;
     max-width: 30vw;
+    min-height: 5vh;
     border:transparent;
 }
 

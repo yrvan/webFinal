@@ -1,7 +1,11 @@
 import {registerCallbacks, sendMessage, signout, chatMessageLoop} from './chat-api';
-let username = localStorage.getItem("username");
+import Firecamp from './sprites/Firecamp.js';
+import Bird from './sprites/Bird.js';
 
-let textareaNode; 
+let username = localStorage.getItem("username");
+let textareaNode;
+let firecamp;
+let bird;
 
 window.addEventListener("load", () => {
     document.querySelector("textarea").onkeyup = function (evt) {
@@ -13,7 +17,6 @@ window.addEventListener("load", () => {
     chatMessageLoop();
 
     textareaNode= document.querySelector("#chat-enter");
-
     localStorage.setItem("members_list",username);
     localStorage.setItem("couleursMembres",username+":"+couleurAleatoire()+';');
 
@@ -32,6 +35,11 @@ window.addEventListener("load", () => {
         this.value = username;
       }
     }
+
+    firecamp = new Firecamp(document.createElement("div"));
+
+    bird = new Bird(document.createElement("div"));
+
 
     tick()
 })
@@ -119,20 +127,29 @@ for (let member of connectedMembers){
 }
 
 
+const couleurAleatoire = () => {
+  var rouge = Math.floor(Math.random() * 256);
+  var vert = Math.floor(Math.random() * 256);
+  var bleu = Math.floor(Math.random() * 256);
+  return 'rgb(' + rouge + ',' + vert + ',' + bleu + ')';
+}
+
 
 const tick = () =>{
-  
-    
+
+      if(firecamp.state == firecamp.fireState){
+        bird.color = Bird.RED_BIRD;
+      }else{
+        bird.color = Bird.BLUE_BIRD;
+      }
 
     textareaNode.style.fontSize = textareaNode.offsetWidth /23 + "px"
-
+    firecamp.tick();
+    bird.tick();
     requestAnimationFrame(tick);
 
   }
 
-  const couleurAleatoire = () => {
-    var rouge = Math.floor(Math.random() * 256);
-    var vert = Math.floor(Math.random() * 256);
-    var bleu = Math.floor(Math.random() * 256);
-    return 'rgb(' + rouge + ',' + vert + ',' + bleu + ')';
-}
+
+
+
