@@ -22,5 +22,10 @@ caracteristque chat:
     -l'etat du feux de camps peut influer sur d'autres objets  
 
 Objet bird(flappy bird):
+-sur le page de chat:
     -couleur depends de l'eat du feux de camp
     -avec les haut,bas,gauche,droite on peut deplacer le bird su l'ecran de tchat
+    -click sur lui le tue
+    -son contact avec le feu de camp le tue
+    -quand meurt deviens gris tombe de plus en pus vite et disparait progressivement
+

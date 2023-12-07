@@ -27,10 +27,6 @@ input{
     border: transparent ;
 }
 
-input::placeholder {
-    text-align: center;
-    color: black;
-}
 
 #chat-enter{
     background-image: url('background/bois.jpg');

@@ -40,7 +40,6 @@ window.addEventListener("load", () => {
 
     bird = new Bird(document.createElement("div"));
 
-
     tick()
 })
 
@@ -171,6 +170,18 @@ const collision = (element1, element2, distance) => {
   );
 }
 
+const sontProches = (element1, element2, distanceMax) => {
+  const rect1 = element1.getBoundingClientRect();
+  const rect2 = element2.getBoundingClientRect();
+
+  // Vérifiez si les éléments sont plus éloignés que la distanceMax dans une direction
+  const tropLoinHorizontalement = rect1.right < rect2.left - distanceMax || rect1.left > rect2.right + distanceMax;
+  const tropLoinVerticalement = rect1.bottom < rect2.top - distanceMax || rect1.top > rect2.bottom + distanceMax;
+
+  // Si l'un des éléments est trop loin dans l'une des directions, ils ne sont pas proches
+  return !(tropLoinHorizontalement || tropLoinVerticalement);
+}
+
 const tick = () =>{
 
       if(firecamp.state == firecamp.fireState){
@@ -179,8 +190,14 @@ const tick = () =>{
         bird.color = Bird.BLUE_BIRD;
       }
 
+      if(bird.opacity <= 0 ){
+        bird = new Bird(document.createElement("div"));
+      }
+      
       if (collision(bird.node, firecamp.node,-53)) {
-        console.log("Le bird touche le firecamp");
+        if(bird.isFlying){
+          bird.isFlying = false;
+        }  
       }
 
     textareaNode.style.fontSize = textareaNode.offsetWidth /23 + "px"
