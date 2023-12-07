@@ -1,0 +1,19 @@
+.tuyau{
+    background-image: url('spritesheet/tuyauFrame/frame.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    height: 50vh;
+    width: 30vw;
+    bottom: 0%;
+    cursor: pointer;
+}
+
+#tuyau1{
+    left: 15vw;
+}
+
+#tuyau2{
+    left: 80vw;
+}
+
