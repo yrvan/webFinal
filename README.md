@@ -2,8 +2,24 @@
 
 Irvan Nayaradou
 
-la propriété css transition: background-images pose probleme sur firefox
+Animation:
+-Utilisation du DOM pour gérer certains éléments de la page(append + remove + innerHTML/innerText):
+    -quand bird meurt il reapparait (.remove,.apennd au document)
 
+-Ajout/suppression de sprites au cours de l’animation:
+
+-Un enchaînement:
+    -bird se stabilise apres chaque mouvement de monté ou de descent
+
+-Modification de l’état des sprites au cours de l’animation
+    -il meurt donc arrete voler pour tomber puis disparait progresivement
+
+-Mouvement de sprites (x, y)
+    -sur pagechat au contacte du feu bird meut
+
+-Programmation par objet pour au moins 2 types de sprite
+    -feux de camp,bird;
+    
 page de chat:
 
 caracteristque chat:
