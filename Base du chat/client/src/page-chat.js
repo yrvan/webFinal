@@ -4,8 +4,9 @@ import BirdChat  from './sprites/BirdChat.js';
 
 let username = localStorage.getItem("username");
 let textareaNode;
-let firecamp;
+let firecamps = [];
 let bird;
+let element = Firecamp.FIRE_STATE;
 
 window.addEventListener("load", () => {
     document.querySelector("textarea").onkeyup = function (evt) {
@@ -22,7 +23,7 @@ window.addEventListener("load", () => {
 
     username = localStorage.getItem("username") + ": ";
 
-    document.querySelector("#username").textContent = localStorage.getItem("username")+"'s chat";
+    document.querySelector(".title").textContent = localStorage.getItem("username")+"'s chat";
 
 
     textareaNode.onfocus = function () {
@@ -36,7 +37,9 @@ window.addEventListener("load", () => {
       }
     }
 
-    firecamp = new Firecamp(document.createElement("div"));
+    firecamps.push(new Firecamp(document.createElement("div"),element,80));
+
+    firecamps.push(new Firecamp(document.createElement("div"),element,2));
 
     bird = new BirdChat(document.createElement("div"));
 
@@ -183,24 +186,52 @@ const sontProches = (element1, element2, distanceMax) => {
 
 const tick = () =>{
 
-      if(firecamp.state == firecamp.fireState){
-        bird.color = BirdChat.RED_BIRD;
-      }else{
-        bird.color = BirdChat.BLUE_BIRD;
-      }
-
+      
       if(bird.opacity <= 0 ){
         bird = new BirdChat(document.createElement("div"));
       }
-      
-      if (collision(bird.node, firecamp.node,-53)) {
-        if(bird.isFlying){
-          bird.isFlying = false;
-        }  
+
+      let i = 0;
+
+      while (i < firecamps.length) {
+
+        firecamps[i].node.onclick = () =>{
+
+          if (element === Firecamp.FIRE_STATE) {
+              element =Firecamp.ICE_STATE;
+          }else{
+              element = Firecamp.FIRE_STATE;
+          }
+
+          for(let j = 0; j <firecamps.length;j++){
+            firecamps[j].change(element);
+          }
+          i = firecamps.length;
+        } 
+        i++;
       }
+      
+      if(element == Firecamp.FIRE_STATE){
+        if(bird.color != BirdChat.RED_BIRD){
+        bird.color = BirdChat.RED_BIRD;}
+      }else{
+        if(bird.color != BirdChat.BLUE_BIRD){
+        bird.color = BirdChat.BLUE_BIRD;}
+      }
+      
 
     textareaNode.style.fontSize = textareaNode.offsetWidth /23 + "px"
-    firecamp.tick();
+    firecamps.forEach(firecamp => {
+        firecamp.tick();
+
+        if (collision(bird.node, firecamp.node,-53)) {
+          if(bird.isFlying){
+            bird.isFlying = false;
+          }  
+        }
+  
+    });
+      
     bird.tick();
     requestAnimationFrame(tick);
 

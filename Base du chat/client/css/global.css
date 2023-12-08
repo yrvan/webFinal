@@ -1,5 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
 
+@keyframes breathing {
+    0%, 100% {
+      background-size: 100%;
+    }
+    50% {
+      background-size: 110%;
+    }
+}
+
+@keyframes borderGlowBrown {
+    0%, 100% {
+      box-shadow: 0 0 8px #A52A2A;
+    }
+    50% {
+      box-shadow: 0 0 15px #8B4513; 
+    }
+}
+
+@keyframes borderGlowGreen {
+    0%, 100% {
+        box-shadow: 0 0 8px #90EE90; 
+    }
+    50% {
+        box-shadow: 0 0 15px #008000; 
+    }
+}
+
+@keyframes borderGlowGray {
+    0%, 100% {
+        box-shadow: 0 0 8px #C0C0C0; 
+    }
+    50% {
+        box-shadow: 0 0 15px #808080;
+    }
+}
+
 * {
     margin:0;
     padding:0;
@@ -25,8 +61,29 @@ body {
 input{
     background-image: url('background/bois.jpg');
     border: transparent ;
+    border-radius: 10px;
 }
 
+input:focus{    
+    border: transparent ;
+    outline: none; /* Supprime l'outline par défaut */
+    box-shadow: 0 0 0 5px #332519; /* Simuler une bordure de 4px de couleur caramel */
+
+}
+
+input:hover{
+    margin: -3px;
+    box-shadow: 0 0 0 5px #8f7762; /* Simuler une bordure de 4px de couleur caramel */
+}
+input::placeholder{
+    text-align: center;
+}
+
+button{    transition: filter 0.3s ease;
+}
+
+button:active{    filter: brightness(150%) contrast(110%);
+}
 
 #chat-enter{
     background-image: url('background/bois.jpg');
@@ -69,9 +126,11 @@ input{
 
 #login:hover{
     background-image: url('background/bois.jpg');
-    background-size: cover;
+    background-size: cover; 
+    animation: borderGlowBrown 1s ease-in-out infinite,breathing 2s ease-in-out infinite;
 
 }
+
 
 #api-message{
     text-align: center;
@@ -94,7 +153,10 @@ input{
 
 #chatPage{
     height: 105dvh;
+}
 
+#registerPage{
+    height: 105dvh;
 }
 
 #chat{
@@ -163,18 +225,20 @@ input{
 .flexing{
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20vh;
-    width: 25%;
+    margin-top: 10vh;
+    width: 70%;
     display: flex;
     flex-direction: column; 
+    align-items: center;
 }
 
 .flexing input {
-    margin-bottom: 5vh;
+    margin-bottom: 7vh;
+    width: 35%;
 }
 
 .flexing #api-message{
-    margin-bottom: 2vh;
+    margin-bottom: 3vh;
 }
 
 
@@ -185,6 +249,9 @@ input{
 
 .register#reg1:hover{
     background-image: url('background/pixel-green.jpg');
+    animation: borderGlowGreen 1s ease-in-out infinite,breathing 2s ease-in-out infinite;
+    ;
+
 }
 
 #sign-out-btn{
@@ -201,6 +268,11 @@ input{
     background-image: url('background/stone.jpg');
 }
 
+#sign-out-btn:hover{
+    animation: borderGlowGray 1s ease-in-out infinite,breathing 2s ease-in-out infinite;
+
+}
+
 #LOG{
     position: absolute;
     left: 2vw;
@@ -213,9 +285,15 @@ input{
     border-radius: 10px;
     cursor: pointer;
     background-image: url('background/stone.jpg');
+
 }
 
-#username{
+#LOG:hover{
+    animation: borderGlowGray 1s ease-in-out infinite,breathing 2s ease-in-out infinite;
+
+}
+
+.title{
     font-size: calc(10px + 0.9vw);
     margin-bottom: 5vh;
 }

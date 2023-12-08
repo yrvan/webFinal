@@ -5,7 +5,7 @@ export default  class BirdChat extends Bird{
 
         super(node); 
 
-        this.y = Math.random() * (window.innerHeight-40);
+        this.y = Math.random() * (window.innerHeight-100);
         this.x = Math.random() * (window.innerWidth-40);
 
         this.node.style.top = this.y+"px";
