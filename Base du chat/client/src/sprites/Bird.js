@@ -3,11 +3,12 @@ export default class Bird{
     static FRAME_TOTAL = 3;
     static RED_BIRD = "redBirdFrame";
     static BLUE_BIRD = "blueBirdFrame";
+    static YELLOW_BIRD = "yellowBirdFrame";
 
     constructor(node) {
         
         this.node = node;
-        this.colors = Bird.RED_BIRD.split;
+        this.colors = Bird.YELLOW_BIRD.split;
         this.frame = 0
 
         this.lastUpdateTime = Date.now();
@@ -15,10 +16,8 @@ export default class Bird{
 
 
         this.isFlying = true;
-        this.y = Math.random() * (window.innerHeight-40);
-        this.x = Math.random() * (window.innerWidth-40);
-        this.node.style.top = this.y+"px";
-        this.node.style.left = this.x +"px";
+        this.y;
+        this.x;
         this.autoStabilization; //contiendras le timer qui remet bird stable apres une montée ou descente  
         this.sol = window.innerHeight-80;//redefini dans tick() pur une meilleur flexibilité
 
@@ -40,10 +39,9 @@ export default class Bird{
 
         this.node.style.transform = this.direction+this.sens["stable"];
 
-        this.node.classList.add('bird');
-        document.body.append(node);
 
-        document.onkeydown = (event) =>{this.move(event.key)}
+        this.node.classList.add('bird');
+
         this.node.onclick = ()=>{
             if(this.isFlying){this.isFlying = false;}
         }
@@ -67,54 +65,80 @@ export default class Bird{
                     y += this.speedy;
                 }
 
-                if(this.x != x){
-                    if (x >= 5 && x <= window.innerWidth - 50){
-
-                        if(x< this.x){
-                            if(this.direction != this.sens["gauche"]){
-                                this.direction = this.sens["gauche"];
-                            }
-                        }
-                        else{
-                            if(this.direction != this.sens["droite"]){
-                                this.direction = this.sens["droite"];
-                            }
-                        }
-                        this.x = x;
-                        this.node.style.transform = this.direction + this.sens["stable"];
-                    }
-                }
-                
-                if(this.y != y){
-                    clearTimeout(this.autoStabilization);
-                    this.autoStabilization = setTimeout(()=>{this.node.style.transform = this.direction+this.sens["stable"];}, 500);
-
-                    if (y >=5 && y <= this.sol){
-                        if (y < this.y){
-                            if(!this.node.style.transform.includes(this.sens["haut"])){
-                                if (!this.node.style.transform.includes(this.sens["stable"])){
-                                    this.node.style.transform = this.direction + this.sens["stable"] ;}
-                                else{
-                                    this.node.style.transform = this.direction + this.sens["haut"];
-                                }
-                            }  
-                        }else{
-                            if(!this.node.style.transform.includes(this.sens["bas"])){
-                                if (!this.node.style.transform.includes(this.sens["stable"])){
-                                    this.node.style.transform = this.direction + this.sens["stable"] ;}
-                                else{
-                                    this.node.style.transform = this.direction + this.sens["bas"];
-                                }
-                            }
-                        }
-                        this.y = y;
-                        
-                    }
-                }
+                this.updateMove(x,y);
                 
             }
     }
 
+    updateMove(x,y){
+        if(this.x != x){
+            if (x >= 5 && x <= window.innerWidth - 50){
+
+                if(x< this.x){
+                    if(this.direction != this.sens["gauche"]){
+                        this.direction = this.sens["gauche"];
+                    }
+                }
+                else{
+                    if(this.direction != this.sens["droite"]){
+                        this.direction = this.sens["droite"];
+                    }
+                }
+                this.x = x;
+                this.node.style.transform = this.direction + this.sens["stable"];
+            }
+        }
+        
+        if(this.y != y){
+            clearTimeout(this.autoStabilization);
+            this.autoStabilization = setTimeout(()=>{this.node.style.transform = this.direction+this.sens["stable"];}, 500);
+
+            if (y >=5 && y <= this.sol){
+                if (y < this.y){
+                    if(!this.node.style.transform.includes(this.sens["haut"])){
+                        if (!this.node.style.transform.includes(this.sens["stable"])){
+                            this.node.style.transform = this.direction + this.sens["stable"] ;}
+                        else{
+                            this.node.style.transform = this.direction + this.sens["haut"];
+                        }
+                    }  
+                }else{
+                    if(!this.node.style.transform.includes(this.sens["bas"])){
+                        if (!this.node.style.transform.includes(this.sens["stable"])){
+                            this.node.style.transform = this.direction + this.sens["stable"] ;}
+                        else{
+                            this.node.style.transform = this.direction + this.sens["bas"];
+                        }
+                    }
+                }
+                this.y = y;
+                
+            }
+        }
+    }
+
+    deathMove(){
+        this.y += this.speedy;
+        this.speedy += this.velocityY;
+
+        if (this.y > this.sol) {
+            this.y = this.sol; // Empêcher l'objet de passer à travers le sol
+            this.speedy = -this.speedy * 0.1; // Rebondir avec une perte d'énergie
+            this.speedx *= 0.85;
+        }
+
+
+            if (this.direction == this.sens["droite"]) {
+                this.x += this.speedx;
+            } else {
+                this.x -= this.speedx;
+            }
+        
+
+        if (Math.abs(this.speedx) < 0.01) {
+            this.speedx = 0;
+        }
+    }
     tickVie(){
         const now = Date.now();
         if (now - this.lastUpdateTime > this.updateInterval) {
@@ -138,26 +162,7 @@ export default class Bird{
         if(!this.node.style.backgroundImage.includes("deadBirdFrame")){
             this.etatMort();
         }
-        this.y += this.speedy;
-        this.speedy += this.velocityY;
-
-        if (this.y > this.sol) {
-            this.y = this.sol; // Empêcher l'objet de passer à travers le sol
-            this.speedy = -this.speedy * 0.1; // Rebondir avec une perte d'énergie
-            this.speedx *= 0.85;
-        }
-
-
-            if (this.direction == this.sens["droite"]) {
-                this.x += this.speedx;
-            } else {
-                this.x -= this.speedx;
-            }
-        
-
-        if (Math.abs(this.speedx) < 0.01) {
-            this.speedx = 0;
-        }
+        if (this.speedx > 0){this.deathMove();}
         setInterval(()=>{
             if(this.speedx == 0){
                 if (this.opacity > 0) {
@@ -185,3 +190,12 @@ export default class Bird{
         }
     }    
 }
+
+
+
+ class BirdIndex extends Bird{
+    constructor(node) {}
+}
+
+
+

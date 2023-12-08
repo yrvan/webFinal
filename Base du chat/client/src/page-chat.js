@@ -1,6 +1,6 @@
 import {registerCallbacks, sendMessage, signout, chatMessageLoop} from './chat-api';
 import Firecamp from './sprites/Firecamp.js';
-import Bird from './sprites/Bird.js';
+import BirdChat  from './sprites/BirdChat.js';
 
 let username = localStorage.getItem("username");
 let textareaNode;
@@ -38,7 +38,7 @@ window.addEventListener("load", () => {
 
     firecamp = new Firecamp(document.createElement("div"));
 
-    bird = new Bird(document.createElement("div"));
+    bird = new BirdChat(document.createElement("div"));
 
     tick()
 })
@@ -146,7 +146,6 @@ for (let member of members_list) {
       document.querySelector("#member-space").append(divNode); 
   }
 }
-  console.log(localStorage);
   console.log(members);
 }
 
@@ -185,13 +184,13 @@ const sontProches = (element1, element2, distanceMax) => {
 const tick = () =>{
 
       if(firecamp.state == firecamp.fireState){
-        bird.color = Bird.RED_BIRD;
+        bird.color = BirdChat.RED_BIRD;
       }else{
-        bird.color = Bird.BLUE_BIRD;
+        bird.color = BirdChat.BLUE_BIRD;
       }
 
       if(bird.opacity <= 0 ){
-        bird = new Bird(document.createElement("div"));
+        bird = new BirdChat(document.createElement("div"));
       }
       
       if (collision(bird.node, firecamp.node,-53)) {

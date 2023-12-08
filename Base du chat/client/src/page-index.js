@@ -1,4 +1,6 @@
 import {signin} from './chat-api';
+import BirdIndex  from './sprites/BirdIndex.js';
+
 
 window.addEventListener("load", () => {
     
