@@ -1,9 +1,9 @@
-import {signin} from './chat-api';
-import BirdIndex  from './sprites/BirdIndex.js';
+import { signin } from './chat-api';
+import BirdIndex from './sprites/BirdIndex.js';
 import Cursor from './sprites/Cursor.js';
 
 
-export const spriteList= [];
+export const spriteList = [];
 
 const BIRD_MAX = 10;
 
@@ -35,23 +35,23 @@ const tick = () => {
     spriteList.forEach(sprite => {
 
         if (spriteList.length < BIRD_MAX) {
-            if (Math.round(Math.random() *100) == 5){
+            if (Math.round(Math.random() * 100) == 5) {
                 spriteList.push(new BirdIndex(document.createElement("div")));
             }
         }
 
-        if(sprite instanceof BirdIndex){
+        if (sprite instanceof BirdIndex) {
 
-            if(sprite.opacity <= 0){
-                spriteList.splice(spriteList.indexOf(sprite),1);
+            if (sprite.opacity <= 0) {
+                spriteList.splice(spriteList.indexOf(sprite), 1);
                 spriteList.push(new BirdIndex(document.createElement("div")));
             }
-        }    
+        }
 
-        if(sprite instanceof Cursor){
-            if(sprite.frame >= Cursor.FRAME_TOTAL){
+        if (sprite instanceof Cursor) {
+            if (sprite.frame >= Cursor.FRAME_TOTAL) {
                 sprite.node.remove();
-                spriteList.splice(spriteList.indexOf(sprite),1);
+                spriteList.splice(spriteList.indexOf(sprite), 1);
             }
         }
         sprite.tick();
