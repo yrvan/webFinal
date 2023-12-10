@@ -51,12 +51,12 @@ Git: <https://github.com/yrvan/webFinal>
 
 ### Événements en fonction du clavier
 
-- **Fleche sur page de chat :**
+- **Page de chat :**
   - les fleches directionelle permettent a bird de se deplacer dans le direction en question
-
-- **Fleche sur page register :**
   - la bar d'espace fait apparaitre un nuage
 
+- **Page register :**
+  - la bar d'espace fait apparaitre un nuage
 
 ### Objet bird
 
@@ -71,6 +71,7 @@ Git: <https://github.com/yrvan/webFinal>
   - Apparaît aléatoirement depuis un des deux tuyaux et se déplace également aléatoirement.
   - Quand il apparaît, l'opacité augmente progressivement et le mouvement est similaire à une propulsion.
   - La souris sur lui fait apparaître un réticule qui le tue.
+  - la bar d'espace le fait apparaitre
 
 ### Objet feux de camp
 
@@ -86,4 +87,3 @@ Git: <https://github.com/yrvan/webFinal>
   - avec une opacité aleatoire
   - la souris sur lui le fait disparaitre progressivement
   - quand espace est press un nuage apparait
-

@@ -13,32 +13,19 @@ window.addEventListener("load", () => {
         window.location.href = "index.html";
     }
 
-    tick();
-
     document.body.onkeydown = (event) => {
-        if (event.key === " "){
+        if (event.key === " ") {
             spriteList.push(new Cloud(document.createElement("div")));
         }
     }
 
+    tick();
+
 })
-
-const createCloud = () =>{
-    spriteList.push(new Cloud(document.createElement("div")));
-}
-
-const createRandomCloud = () =>{
-    setInterval(() => {
-        createCloud();
-
-        let intervalleAleatoire = Math.random() * (5000);
-        setTimeout(createCloud, intervalleAleatoire);
-    }, 5000);
-}
 
 const tick = () => {
 
-    if (Math.round(Math.random() * 3000) < 25){
+    if (Math.round(Math.random() * 3000) < 25) {
         spriteList.push(new Cloud(document.createElement("div")));
     }
 
@@ -50,11 +37,11 @@ const tick = () => {
     spriteList.forEach((sprite) => {
         if (sprite instanceof Cloud) {
             sprite.tick();
-            if (sprite.del){
+            if (sprite.del) {
                 sprite.node.remove();
                 spriteList.splice(spriteList.indexOf(sprite), 1);
             }
-        }    
+        }
     });
 
     requestAnimationFrame(tick);

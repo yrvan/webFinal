@@ -12,19 +12,19 @@ export default class Cloud {
         this.speed = Math.random() * (5 - 0.1) + 0.1;
 
         this.lastUpdateTime = Date.now();
-        this.updateInterval = 500/this.speed;
+        this.updateInterval = 500 / this.speed;
 
-        if (Math.random()>0.49) {
+        if (Math.random() > 0.49) {
             this.sens = "droite";
             this.x = -100;
-        }else {
+        } else {
             this.sens = "gauche";
-            this.x = window.innerWidth+10;
+            this.x = window.innerWidth + 10;
         }
 
         this.y = Math.random() * (window.innerHeight - 100);
 
-        this.speedx = 1 * this.speed+0,1;
+        this.speedx = 1 * this.speed + 0, 1;
 
         this.opacity = Math.random();
 
@@ -43,38 +43,38 @@ export default class Cloud {
 
 
 
-        this.node.onmouseover = () =>{
+        this.node.onmouseover = () => {
             this.reduce_opacity = true;
         }
 
-        this.node.onmouseout = () =>{
+        this.node.onmouseout = () => {
             this.reduce_opacity = false;
         }
 
 
     }
 
-    move(){
-        if(this.sens == "droite"){
+    move() {
+        if (this.sens == "droite") {
             this.x += this.speedx;
         }
-        else{
+        else {
             this.x -= this.speedx;
         }
     }
 
-    deleteCheck(){
-        if(this.sens == "droite"){
-            if(this.x > window.innerWidth+10){
+    deleteCheck() {
+        if (this.sens == "droite") {
+            if (this.x > window.innerWidth + 10) {
                 this.del = true;
             }
-        }else{
-            if(this.x < -100){
+        } else {
+            if (this.x < -100) {
                 this.del = true;
             }
         }
 
-        if(this.opacity <= 0){
+        if (this.opacity <= 0) {
             this.del = true;
         }
     }
@@ -93,7 +93,7 @@ export default class Cloud {
         this.deleteCheck();
 
         this.move();
-        
+
         this.node.style.opacity = this.opacity;
 
         this.node.style.left = this.x + "px";

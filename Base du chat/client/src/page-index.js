@@ -15,8 +15,12 @@ window.addEventListener("load", () => {
     document.querySelector(".register").onclick = () => {
         window.location.href = 'register.html';
     }
-    spriteList.push(new BirdIndex(document.createElement("div")));
 
+    document.body.onkeydown = (event) => {
+        if (event.key === " ") {
+            spriteList.push(new BirdIndex(document.createElement("div")));
+        }
+    }
 
     tick();
 });
@@ -29,16 +33,13 @@ const tick = () => {
         document.querySelector('#api-message').style.animation = "shake 1s";
     }
 
-
-
+    if (spriteList.length < BIRD_MAX) {
+        if (Math.round(Math.random() * 3000) < 25) {
+            spriteList.push(new BirdIndex(document.createElement("div")));
+        }
+    }
 
     spriteList.forEach(sprite => {
-
-        if (spriteList.length < BIRD_MAX) {
-            if (Math.round(Math.random() * 100) == 5) {
-                spriteList.push(new BirdIndex(document.createElement("div")));
-            }
-        }
 
         if (sprite instanceof BirdIndex) {
 
