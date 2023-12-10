@@ -1,11 +1,22 @@
 import  Bird from './Bird.js';
 
+import Cursor  from "./Cursor";
+
+import {spriteList}  from "../page-chat";
+
+
+
+
 export default  class BirdChat extends Bird{
-    constructor(node) {
+    static RED_BIRD = "redBirdFrame";
+    static BLUE_BIRD = "blueBirdFrame";
+    constructor(node,element) {
 
         super(node); 
 
         this.limite();
+
+        this.color = Bird.RED_BIRD;
 
         this.speedx = 20;
         this.speedy = 15;
@@ -20,6 +31,12 @@ export default  class BirdChat extends Bird{
 
         document.body.append(node);
 
+        this.node.onmouseover = (evt)=>{
+            if(this.isFlying){
+                spriteList.push(new Cursor(evt.x, evt.y,spriteList));
+                this.isFlying = false;
+            }
+        }
 
     }
 

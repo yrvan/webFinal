@@ -41,11 +41,18 @@ Objet bird(flappy bird):
 -sur la page de chat:
     -couleur depends de l'eat du feux de camp
     -avec les haut,bas,gauche,droite on peut deplacer le bird su l'ecran de tchat
-    -la souris sur lui le tue
+    -la souris sur lui fait apparaitre un reticul qui le tue
     -son contact avec le feu de camp le tue
     -quand meurt deviens gris tombe de plus en pus vite et disparait progressivement
 
 -sur la page index:
-    -quand apparait il est propulsé et devient progressivement visible
-    -si il touche le sol il meurt
+    -apparait aleatoirement depuis un des 2 tuyau et se deplace egalement aleatoirement
+    -quand apparait opacité augmente progressivement et mouvement similaire a une propulsion
+    -la souris sur lui fait apparaitre un reticul qui le tue
+
+
+Objet bird(feux de camp):
+-page-chat:
+    -possede 2 etat feux de camp normal et feux de camp glacé
+    -clicquer sur lui le fait changer d'etat
 

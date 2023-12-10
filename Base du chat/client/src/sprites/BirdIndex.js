@@ -1,5 +1,11 @@
 import  Bird from './Bird.js';
 
+import Cursor  from "./Cursor";
+
+
+import {spriteList}  from "../page-index";
+
+
 export default  class BirdIndex extends Bird{
     constructor(node) {
 
@@ -20,27 +26,25 @@ export default  class BirdIndex extends Bird{
         this.x = 25;
         this.y = 0;
 
-        this.opacity = 1;
+        this.opacity = 0;
         this.node.style.opacity = this.opacity;
 
         this.speedy = 10; 
-        this.speedx = 15; 
+        this.speedx = 60; 
 
 
         document.querySelector("#tuyau2").append(this.node);
 
         this.node.style.top =this.y+"px";
         this.node.style.left =this.x+"px";
-
-        document.onkeydown =(event) =>{
-            this.move(event.key)
-            if (event.key === " ") {
-                //this.move();
-                this.jump();
-            }
-        }
        
         this.simulerPropulsion(0.1, 900);
+
+        this.node.onmouseover = (evt)=>{
+            if(this.isFlying){
+                spriteList.push(new Cursor(evt.x, evt.y));
+                this.isFlying = false;}
+        }
     }
 
     limite(){

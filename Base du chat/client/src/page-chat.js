@@ -1,11 +1,15 @@
 import {registerCallbacks, sendMessage, signout, chatMessageLoop} from './chat-api';
 import Firecamp from './sprites/Firecamp.js';
-import BirdChat  from './sprites/BirdChat.js';
+import BirdChat from './sprites/BirdChat.js';
+
+import Cursor  from "./sprites/Cursor.js";
+
+
+export const spriteList= [];
+
 
 let username = localStorage.getItem("username");
 let textareaNode;
-let firecamps = [];
-let bird;
 let element = Firecamp.FIRE_STATE;
 
 window.addEventListener("load", () => {
@@ -37,11 +41,11 @@ window.addEventListener("load", () => {
       }
     }
 
-    firecamps.push(new Firecamp(document.createElement("div"),element,80));
+    spriteList.push(new Firecamp(document.createElement("div"),element,80));
 
-    firecamps.push(new Firecamp(document.createElement("div"),element,2));
+    spriteList.push(new Firecamp(document.createElement("div"),element,2));
 
-    bird = new BirdChat(document.createElement("div"));
+    spriteList.push(new BirdChat(document.createElement("div")));
 
     tick()
 })
@@ -174,53 +178,69 @@ const collision = (element1, element2, distance) => {
 
 const tick = () =>{
 
-      
-      if(bird.opacity <= 0 ){
-        bird = new BirdChat(document.createElement("div"));
-      }
+  
 
-      let i = 0;
 
-      while (i < firecamps.length) {
-
-        firecamps[i].node.onclick = () =>{
-
-          if (element === Firecamp.FIRE_STATE) {
-              element =Firecamp.ICE_STATE;
+      spriteList.forEach(bird => {
+        if (bird instanceof BirdChat) {
+          if(element == Firecamp.FIRE_STATE){
+            if(bird.color != BirdChat.RED_BIRD){
+              bird.color = BirdChat.RED_BIRD;}
           }else{
-              element = Firecamp.FIRE_STATE;
+            if(bird.color != BirdChat.BLUE_BIRD){
+              bird.color = BirdChat.BLUE_BIRD;}
           }
 
-          for(let j = 0; j <firecamps.length;j++){
-            firecamps[j].change(element);
+          if(bird.opacity <= 0){
+            spriteList.splice(spriteList.indexOf(bird),1);
+            spriteList.push(new BirdChat(document.createElement("div")));
           }
-          i = firecamps.length;
-        } 
-        i++;
-      }
+
+          spriteList.forEach(firecamp => {
+            if(firecamp instanceof Firecamp){
+              if (collision(bird.node, firecamp.node,-53)) {
+                if(bird.isFlying){
+                  bird.isFlying = false;
+                }  
+              }
+            }
+          });
+
+        }
+      });
       
-      if(element == Firecamp.FIRE_STATE){
-        if(bird.color != BirdChat.RED_BIRD){
-        bird.color = BirdChat.RED_BIRD;}
-      }else{
-        if(bird.color != BirdChat.BLUE_BIRD){
-        bird.color = BirdChat.BLUE_BIRD;}
-      }
       
+      spriteList.forEach( sprite => {
+
+        if(sprite instanceof Cursor){
+          if(sprite.frame >= Cursor.FRAME_TOTAL){
+              sprite.node.remove();
+              spriteList.splice(spriteList.indexOf(sprite),1);
+          }
+      }
+
+        if(sprite instanceof Firecamp){
+          if(sprite.switch){
+            sprite.switch = false;
+
+            if (element != Firecamp.ICE_STATE) {
+              element =Firecamp.ICE_STATE;
+            }
+            else{element = Firecamp.FIRE_STATE;
+            }
+
+            spriteList.forEach( sprite => {
+              if(sprite instanceof Firecamp){
+                sprite.change(element);
+              }
+            });
+          }     
+        }
+        sprite.tick();
+      });
 
     textareaNode.style.fontSize = textareaNode.offsetWidth /23 + "px"
-    firecamps.forEach(firecamp => {
-        firecamp.tick();
 
-        if (collision(bird.node, firecamp.node,-53)) {
-          if(bird.isFlying){
-            bird.isFlying = false;
-          }  
-        }
-  
-    });
-      
-    bird.tick();
     requestAnimationFrame(tick);
 
   }

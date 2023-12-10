@@ -26,3 +26,12 @@
     cursor: pointer;
 }
 
+
+.cursor {
+	position:absolute;
+    background-repeat: no-repeat;
+	background-image:url('spritesheet/cursorFrame/frame0.png');
+	width:3vw;
+    aspect-ratio: 2;
+    background-size: contain;
+}

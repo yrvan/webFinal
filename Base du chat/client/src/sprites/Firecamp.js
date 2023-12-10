@@ -20,6 +20,14 @@ export default class Firecamp {
 
         document.body.append(node);
 
+        this.switch = false;
+        
+        this.node.onclick = () =>{
+
+
+          this.switch = true;
+
+        } 
     }
 
     change(element) {

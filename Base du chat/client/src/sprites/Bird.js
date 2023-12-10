@@ -1,8 +1,8 @@
 
+
+
 export default class Bird{
     static FRAME_TOTAL = 3;
-    static RED_BIRD = "redBirdFrame";
-    static BLUE_BIRD = "blueBirdFrame";
     static YELLOW_BIRD = "yellowBirdFrame";
 
     constructor(node) {
@@ -10,6 +10,8 @@ export default class Bird{
         this.node = node;
         this.color = Bird.YELLOW_BIRD;
         this.frame = 0
+
+
 
         this.lastUpdateTime = Date.now();
         this.updateInterval = 100;
@@ -39,9 +41,8 @@ export default class Bird{
 
         this.node.classList.add('bird');
 
-        this.node.onmouseover = ()=>{
-            if(this.isFlying){this.isFlying = false;}
-        }
+        
+    
     }
     
 
@@ -160,14 +161,14 @@ export default class Bird{
             this.etatMort();
         }
         if (this.speedx > 0){this.fall();}
-        setTimeout(()=>{
-            if(this.speedx == 0){
-                if (this.opacity > 0) {
-                    this.opacity -= 0.01;
-                    this.node.style.opacity = this.opacity;
-                }
+
+        if(this.speedx <= 0){
+            if (this.opacity > 0) {
+                this.opacity -= 0.01;
+                this.node.style.opacity = this.opacity;
             }
-        },1000);
+            else{this.opacity = 0;}
+        }
         
         if(this.opacity <= 0){
             this.node.remove();
@@ -186,6 +187,7 @@ export default class Bird{
         }else{
             this.tickMort();
         }
+        
     }    
 }
 
