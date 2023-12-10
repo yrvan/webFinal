@@ -169,8 +169,6 @@ export default class BirdIndex extends Bird {
             this.isFlying = false;
         }
 
-        this.x +=this.wind;
-
         if (this.x < this.mur_gauche) {
             this.x = this.mur_droit;
         } else if (this.x > this.mur_droit) {
@@ -182,6 +180,7 @@ export default class BirdIndex extends Bird {
         }
 
         if (this.isFlying) {
+            this.x +=this.wind;
             this.tickVie();
         } else {
             this.tickMort();

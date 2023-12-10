@@ -26,12 +26,9 @@ window.addEventListener("load", () => {
 
     document.addEventListener('wheel', (event) =>{
         if (event.deltaY > 0) {
-            wind -= 0.1;
-            console.log(wind);
-            
+            wind -= 0.1;            
         } else {
             wind += 0.1;
-            console.log(wind);
         }
     });
 
@@ -84,11 +81,11 @@ const tick = () => {
                 sprite.sens = "droite";
             }
 
-            if (sprite.updateInterval <= 50) {
-                sprite.updateInterval = 50
+            if (sprite.interval <= 50) {
+                sprite.interval = 50
             }
-            if (sprite.updateInterval >= 200) {
-                sprite.updateInterval = 200
+            if (sprite.interval >= 200) {
+                sprite.interval = 200
             }
 
             if (sprite.frame >= Wind.FRAME_TOTAL) {
