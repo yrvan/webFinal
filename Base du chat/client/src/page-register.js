@@ -16,7 +16,8 @@ window.addEventListener("load", () => {
 const tick = () =>{
 
     if (document.querySelector('#api-message').textContent != "REG") {
-        document.querySelector('#api-message').style.visibility = "visible";
+        document.querySelector('#api-message').style.opacity = 1;
+        document.querySelector('#api-message').style.animation = "shake 1s";
     }
 
     requestAnimationFrame(tick);

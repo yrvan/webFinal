@@ -1,58 +1,64 @@
 # webFinal
 
-Irvan Nayaradou
+**Auteur :** Irvan Nayaradou
 
-Animation:
--Utilisation du DOM pour gérer certains éléments de la page(append + remove + innerHTML/innerText):
-    -quand bird meurt il reapparait (.remove,.apennd au document)
+Git: https://github.com/yrvan/webFinal
 
--Ajout/suppression de sprites au cours de l’animation:
+## Animation
 
--Un enchaînement:
-    -bird se stabilise apres chaque mouvement de monté ou de descent
+- **Utilisation du DOM pour gérer certains éléments de la page (append, remove, innerHTML/innerText) :**
+  - Quand le "bird" meurt, il réapparaît (utilisation de `.remove`, `.append` au document).
 
--Modification de l’état des sprites au cours de l’animation
-    -il meurt donc arrete voler pour tomber puis disparait progresivement
+- **Ajout/suppression de sprites au cours de l'animation.**
+  -le curseur
 
--Mouvement de sprites (x, y)
-    -sur pagechat au contacte du feu bird meut
+- **Un enchaînement :**
+  - Le "bird" se stabilise après chaque mouvement de montée ou de descente.
 
--Programmation par objet pour au moins 2 types de sprite
-    -feux de camp,bird;
-    
-page de chat:
+- **Modification de l'état des sprites au cours de l'animation :**
+  - Le "bird" meurt, cesse de voler, tombe puis disparaît progressivement.
 
-caracteristque chat:
--chat
-    -chaque membre possende une couleur aleatoire(donc 2 membres peuvent avoir la meme couleur mais tres peux de chance)
-    -cette couleur s'affiche que sur le nom du membres lors de l'envoie de son message
-    -/new_color pour changer la couleur de tous les membres
+- **Mouvement de sprites (x, y) :**
+  - Sur la page "chat", au contact du feu, le "bird" meurt.
 
--lste de membres
-    -les membres connecté aparaissent avec leurs couleurs
-    -tandis que les membres qui etait connecté apparaissent en noir dans la categorie membres offlines
+- **Programmation par objet pour au moins 2 types de sprite :**
+  - Feux de camp, bird.
 
-événements en fonction de la souris:
--click sur feux de camp:
-    -feux de camp devient feux-glacé de camp apres un click et reviens a la normal si on click de nouveau
-    -l'etat du feux de camps peut influer sur d'autres objets  
+## Page de chat
 
-Objet bird(flappy bird):
--sur la page de chat:
-    -couleur depends de l'eat du feux de camp
-    -avec les haut,bas,gauche,droite on peut deplacer le bird su l'ecran de tchat
-    -la souris sur lui fait apparaitre un reticul qui le tue
-    -son contact avec le feu de camp le tue
-    -quand meurt deviens gris tombe de plus en pus vite et disparait progressivement
+### Caractéristiques chat :
 
--sur la page index:
-    -apparait aleatoirement depuis un des 2 tuyau et se deplace egalement aleatoirement
-    -quand apparait opacité augmente progressivement et mouvement similaire a une propulsion
-    -la souris sur lui fait apparaitre un reticul qui le tue
+- **Chat :**
+  - Chaque membre possède une couleur aléatoire (deux membres peuvent avoir la même couleur, mais c'est peu probable).
+  - Cette couleur s'affiche uniquement sur le nom du membre lors de l'envoi de son message.
+  - Utilisation de `/new_color` pour changer la couleur de tous les membres.
 
+- **Liste de membres :**
+  - Les membres connectés apparaissent avec leur couleur.
+  - Les membres précédemment connectés apparaissent en noir dans la catégorie "membres offlines".
 
-Objet bird(feux de camp):
--page-chat:
-    -possede 2 etat feux de camp normal et feux de camp glacé
-    -clicquer sur lui le fait changer d'etat
+### Événements en fonction de la souris :
 
+- **Click sur feux de camp :**
+  - Le feu de camp devient un "feu-glacé" après un clic et revient à la normale si on clique de nouveau.
+  - L'état du feu de camp peut influencer d'autres objets.
+
+### Objet bird (flappy bird) :
+
+- **Sur la page de chat :**
+  - La couleur dépend de l'état du feu de camp.
+  - Avec les touches haut, bas, gauche, droite, on peut déplacer le bird sur l'écran de chat.
+  - La souris sur lui fait apparaître un réticule qui le tue.
+  - Son contact avec le feu de camp le tue.
+  - Quand il meurt, il devient gris, tombe de plus en plus vite et disparaît progressivement.
+
+- **Sur la page index :**
+  - Apparaît aléatoirement depuis un des deux tuyaux et se déplace également aléatoirement.
+  - Quand il apparaît, l'opacité augmente progressivement et le mouvement est similaire à une propulsion.
+  - La souris sur lui fait apparaître un réticule qui le tue.
+
+### Objet bird (feux de camp) :
+
+- **Page chat :**
+  - Possède 2 états : feu de camp normal et feu de camp glacé.
+  - Cliquer sur lui le fait changer d'état.
