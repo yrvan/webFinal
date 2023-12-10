@@ -1,5 +1,4 @@
 import Bird from './Bird.js';
-
 import Cursor from "./Cursor";
 
 import { spriteList } from "../page-chat";
@@ -27,9 +26,9 @@ export default class BirdChat extends Bird {
         this.node.style.top = this.y + "px";
         this.node.style.left = this.x + "px";
 
-        document.onkeydown = (event) => { this.move(event.key) }
-
         document.body.append(node);
+
+        document.onkeydown = (event) => { this.move(event.key) }
 
         this.node.onmouseover = (evt) => {
             if (this.isFlying) {

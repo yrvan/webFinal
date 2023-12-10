@@ -42,7 +42,7 @@ const tick = () => {
 
         if (sprite instanceof BirdIndex) {
 
-            if (sprite.opacity <= 0) {
+            if (sprite.opacity <= 0 && !sprite.propulsion) {
                 spriteList.splice(spriteList.indexOf(sprite), 1);
                 spriteList.push(new BirdIndex(document.createElement("div")));
             }

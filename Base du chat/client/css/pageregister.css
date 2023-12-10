@@ -1,0 +1,9 @@
+.cloud{
+    background-image: url('spritesheet/cloudFrame/frame0.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    width: 10vw;
+    height: 20vh;
+    z-index: 1;
+}

@@ -1,8 +1,6 @@
 import Bird from './Bird.js';
 
 import Cursor from "./Cursor";
-
-
 import { spriteList } from "../page-index";
 
 
@@ -13,13 +11,13 @@ export default class BirdIndex extends Bird {
 
         this.node = node;
 
-        if (Math.round() == 1) {
+        if (Math.round(Math.random() * 1) == 1) {
             this.spawm = "#tuyau1";
         } else {
             this.spawm = "#tuyau2";
         }
 
-        this.tuyau = document.querySelector("#tuyau2").getBoundingClientRect();
+        this.tuyau = document.querySelector(this.spawm).getBoundingClientRect();
 
         this.limite();
 
@@ -33,15 +31,17 @@ export default class BirdIndex extends Bird {
         this.speedx = 60;
 
 
-        document.querySelector("#tuyau2").append(this.node);
+        document.querySelector(this.spawm).append(this.node);
 
         this.node.style.top = this.y + "px";
         this.node.style.left = this.x + "px";
 
+        this.propulsion = true;
+
         this.simulerPropulsion(0.1, 900);
 
         this.node.onmouseover = (evt) => {
-            if (this.isFlying) {
+            if (this.isFlying && !this.propulsion) {
                 spriteList.push(new Cursor(evt.x, evt.y));
                 this.isFlying = false;
             }
@@ -155,13 +155,14 @@ export default class BirdIndex extends Bird {
             this.node.style.transform = this.direction + this.sens["haut"];
             if (tempsActuel >= duree) {
                 clearInterval(interval);
+                this.propulsion = false;
             }
         }, 10);
     }
 
     tick() {
         this.limite();
-        this.tuyau = document.querySelector("#tuyau2").getBoundingClientRect();
+        this.tuyau = document.querySelector(this.spawm).getBoundingClientRect();
 
         if (this.isFlying && this.y == this.sol) {
             this.isFlying = false;

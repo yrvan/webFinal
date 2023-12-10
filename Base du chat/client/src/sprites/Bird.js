@@ -11,11 +11,8 @@ export default class Bird {
         this.color = Bird.YELLOW_BIRD;
         this.frame = 0
 
-
-
         this.lastUpdateTime = Date.now();
         this.updateInterval = 100;
-
 
         this.isFlying = true;
         this.y;
@@ -23,8 +20,6 @@ export default class Bird {
         this.autoStabilization; //contiendras le timer qui remet bird stable apres une montée ou descente 
 
         this.velocityY = 0.2;
-
-
 
         this.sens = {
             droite: 'scaleX(1)',
@@ -38,13 +33,11 @@ export default class Bird {
 
         this.node.style.transform = this.direction + this.sens["stable"];
 
-
         this.node.classList.add('bird');
 
 
 
     }
-
 
     move(key) {
         let x = this.x;

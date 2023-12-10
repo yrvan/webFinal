@@ -74,18 +74,20 @@ input{
     background-image: url('background/bois.jpg');
     border: transparent ;
     border-radius: 10px;
+    padding-left: 1%;
+    z-index: 2;
 }
 
 input:focus{    
     border: transparent ;
-    outline: none; /* Supprime l'outline par défaut */
-    box-shadow: 0 0 0 5px #332519; /* Simuler une bordure de 4px de couleur caramel */
+    outline: none;
+    box-shadow: 0 0 0 5px #332519; 
 
 }
 
 input:hover{
     margin: -3px;
-    box-shadow: 0 0 0 5px #8f7762; /* Simuler une bordure de 4px de couleur caramel */
+    box-shadow: 0 0 0 5px #8f7762; 
 }
 
 input::placeholder{
@@ -94,7 +96,7 @@ input::placeholder{
 }
 
 button{
-        transition: filter 0.3s ease;
+    transition: filter 0.3s ease;
 }
 
 button:active{    filter: brightness(150%) contrast(110%);
@@ -316,4 +318,5 @@ button:active{    filter: brightness(150%) contrast(110%);
 .title{
     font-size: calc(10px + 0.9vw);
     margin-bottom: 5vh;
+    z-index: 2;
 }
