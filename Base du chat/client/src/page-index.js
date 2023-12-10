@@ -1,9 +1,11 @@
 import { signin } from './chat-api';
 import BirdIndex from './sprites/BirdIndex.js';
 import Cursor from './sprites/Cursor.js';
+import Wind from './sprites/Wind.js';
 
 
 export const spriteList = [];
+let wind = 0;
 
 const BIRD_MAX = 10;
 
@@ -22,11 +24,25 @@ window.addEventListener("load", () => {
         }
     }
 
+    document.addEventListener('wheel', (event) =>{
+        if (event.deltaY > 0) {
+            wind -= 0.1;
+            console.log(wind);
+            
+        } else {
+            wind += 0.1;
+            console.log(wind);
+        }
+    });
+
     tick();
 });
 
 const tick = () => {
 
+    if (Math.round(Math.random() * 3000) < 25) {
+        spriteList.push(new Wind(document.createElement("div")));
+    }
 
     if (document.querySelector('#api-message').textContent != "LOG") {
         document.querySelector('#api-message').style.opacity = 1;
@@ -43,6 +59,8 @@ const tick = () => {
 
         if (sprite instanceof BirdIndex) {
 
+            sprite.wind = wind;
+
             if (sprite.opacity <= 0 && !sprite.propulsion) {
                 spriteList.splice(spriteList.indexOf(sprite), 1);
                 spriteList.push(new BirdIndex(document.createElement("div")));
@@ -55,8 +73,31 @@ const tick = () => {
                 spriteList.splice(spriteList.indexOf(sprite), 1);
             }
         }
+
+        if (sprite instanceof Wind) {
+
+            sprite.interval = sprite.updateInterval -  Math.abs(20 * wind);
+
+            if(wind < 0){
+                sprite.sens = "gauche";
+            }else{
+                sprite.sens = "droite";
+            }
+
+            if (sprite.updateInterval <= 50) {
+                sprite.updateInterval = 50
+            }
+            if (sprite.updateInterval >= 200) {
+                sprite.updateInterval = 200
+            }
+
+            if (sprite.frame >= Wind.FRAME_TOTAL) {
+                sprite.node.remove();
+                spriteList.splice(spriteList.indexOf(sprite), 1);
+            }
+        }
         sprite.tick();
-    });
+    })
 
 
 

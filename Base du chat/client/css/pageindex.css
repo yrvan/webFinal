@@ -34,3 +34,13 @@
     aspect-ratio: 2;
     background-size: contain;
 }
+
+.wind {
+    position:absolute;
+    background-repeat: no-repeat;
+	background-image:url('spritesheet/windFrame/frame0.png');
+	width:10vw;
+    aspect-ratio: 1;
+    background-size: contain;
+    z-index: 1;
+}

@@ -47,7 +47,10 @@ Git: <https://github.com/yrvan/webFinal>
   - bird meurt
 
 - **Passe sur Cloud(onmouseover) :**
-  disparait progressivement
+  - disparait progressivement
+
+- **Molette sur Page index :**
+  - permet de gerer la vitesse du vent
 
 ### Événements en fonction du clavier
 
@@ -72,6 +75,7 @@ Git: <https://github.com/yrvan/webFinal>
   - Quand il apparaît, l'opacité augmente progressivement et le mouvement est similaire à une propulsion.
   - La souris sur lui fait apparaître un réticule qui le tue.
   - la bar d'espace le fait apparaitre
+  - postion x depends de la vitesse du vent de la page
 
 ### Objet feux de camp
 
@@ -87,3 +91,8 @@ Git: <https://github.com/yrvan/webFinal>
   - avec une opacité aleatoire
   - la souris sur lui le fait disparaitre progressivement
   - quand espace est press un nuage apparait
+
+### Objet Wind
+
+  -indique la vitesse et la direction que possede le vent
+  -pparais brievement puis disparait une fois toutes frames affichées

@@ -30,6 +30,7 @@ export default class BirdIndex extends Bird {
         this.speedy = 10;
         this.speedx = 60;
 
+        this.wind;
 
         document.querySelector(this.spawm).append(this.node);
 
@@ -167,6 +168,8 @@ export default class BirdIndex extends Bird {
         if (this.isFlying && this.y == this.sol) {
             this.isFlying = false;
         }
+
+        this.x +=this.wind;
 
         if (this.x < this.mur_gauche) {
             this.x = this.mur_droit;
