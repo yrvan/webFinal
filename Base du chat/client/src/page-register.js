@@ -15,6 +15,12 @@ window.addEventListener("load", () => {
 
     tick();
 
+    document.body.onkeydown = (event) => {
+        if (event.key === " "){
+            spriteList.push(new Cloud(document.createElement("div")));
+        }
+    }
+
 })
 
 const createCloud = () =>{

@@ -2,7 +2,7 @@
 
 **Auteur :** Irvan Nayaradou
 
-Git: https://github.com/yrvan/webFinal
+Git: <https://github.com/yrvan/webFinal>
 
 ## Animation
 
@@ -10,7 +10,7 @@ Git: https://github.com/yrvan/webFinal
   - Quand le "bird" meurt, il réapparaît (utilisation de `.remove`, `.append` au document).
 
 - **Ajout/suppression de sprites au cours de l'animation.**
-  -le curseur
+  - le curseur apparais brievement puis disparait une fois toutes frames affichées
 
 - **Un enchaînement :**
   - Le "bird" se stabilise après chaque mouvement de montée ou de descente.
@@ -26,7 +26,7 @@ Git: https://github.com/yrvan/webFinal
 
 ## Page de chat
 
-### Caractéristiques chat :
+### Caractéristiques chat
 
 - **Chat :**
   - Chaque membre possède une couleur aléatoire (deux membres peuvent avoir la même couleur, mais c'est peu probable).
@@ -37,13 +37,28 @@ Git: https://github.com/yrvan/webFinal
   - Les membres connectés apparaissent avec leur couleur.
   - Les membres précédemment connectés apparaissent en noir dans la catégorie "membres offlines".
 
-### Événements en fonction de la souris :
+### Événements en fonction de la souris
 
 - **Click sur feux de camp :**
   - Le feu de camp devient un "feu-glacé" après un clic et revient à la normale si on clique de nouveau.
   - L'état du feu de camp peut influencer d'autres objets.
 
-### Objet bird (flappy bird) :
+- **Passe sur Bird(onmouseover) :**
+  - bird meurt
+
+- **Passe sur Cloud(onmouseover) :**
+  disparait progressivement
+
+### Événements en fonction du clavier
+
+- **Fleche sur page de chat :**
+  - les fleches directionelle permettent a bird de se deplacer dans le direction en question
+
+- **Fleche sur page register :**
+  - la bar d'espace fait apparaitre un nuage
+
+
+### Objet bird
 
 - **Sur la page de chat :**
   - La couleur dépend de l'état du feu de camp.
@@ -57,8 +72,18 @@ Git: https://github.com/yrvan/webFinal
   - Quand il apparaît, l'opacité augmente progressivement et le mouvement est similaire à une propulsion.
   - La souris sur lui fait apparaître un réticule qui le tue.
 
-### Objet bird (feux de camp) :
+### Objet feux de camp
 
 - **Page chat :**
   - Possède 2 états : feu de camp normal et feu de camp glacé.
   - Cliquer sur lui le fait changer d'état.
+
+### Objet nuage
+
+- **Page register :**
+  - apparait aleatoirement a droite ou a gauche
+  - se deplace du coté oposé d'ou il spawn
+  - avec une opacité aleatoire
+  - la souris sur lui le fait disparaitre progressivement
+  - quand espace est press un nuage apparait
+
