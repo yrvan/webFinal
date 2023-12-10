@@ -1,6 +1,7 @@
 import {signin} from './chat-api';
 import BirdIndex  from './sprites/BirdIndex.js';
 
+let bird;
 
 window.addEventListener("load", () => {
     
@@ -10,9 +11,11 @@ window.addEventListener("load", () => {
 
     document.querySelector(".register").onclick = () => {
         window.location.href = 'register.html';
-      }
+    }
 
-      tick()
+    bird = new BirdIndex(document.createElement("div"));
+
+    tick();
 });
 
 const tick = () => {
@@ -21,5 +24,7 @@ const tick = () => {
         document.querySelector('#api-message').style.visibility = "visible";
     }
 
+
+    bird.tick();
     requestAnimationFrame(tick);
 }

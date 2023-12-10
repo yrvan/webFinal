@@ -172,18 +172,6 @@ const collision = (element1, element2, distance) => {
   );
 }
 
-const sontProches = (element1, element2, distanceMax) => {
-  const rect1 = element1.getBoundingClientRect();
-  const rect2 = element2.getBoundingClientRect();
-
-  // Vérifiez si les éléments sont plus éloignés que la distanceMax dans une direction
-  const tropLoinHorizontalement = rect1.right < rect2.left - distanceMax || rect1.left > rect2.right + distanceMax;
-  const tropLoinVerticalement = rect1.bottom < rect2.top - distanceMax || rect1.top > rect2.bottom + distanceMax;
-
-  // Si l'un des éléments est trop loin dans l'une des directions, ils ne sont pas proches
-  return !(tropLoinHorizontalement || tropLoinVerticalement);
-}
-
 const tick = () =>{
 
       

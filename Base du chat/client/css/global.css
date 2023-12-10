@@ -77,6 +77,7 @@ input:hover{
 }
 input::placeholder{
     text-align: center;
+    color: black;
 }
 
 button{    transition: filter 0.3s ease;

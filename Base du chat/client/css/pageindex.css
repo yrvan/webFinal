@@ -17,3 +17,12 @@
     left: 80vw;
 }
 
+.bird{
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    width:2vw;
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+

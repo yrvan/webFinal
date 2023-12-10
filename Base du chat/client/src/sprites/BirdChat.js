@@ -5,6 +5,11 @@ export default  class BirdChat extends Bird{
 
         super(node); 
 
+        this.limite();
+
+        this.speedx = 20;
+        this.speedy = 15;
+        
         this.y = Math.random() * (window.innerHeight-100);
         this.x = Math.random() * (window.innerWidth-40);
 
@@ -16,5 +21,12 @@ export default  class BirdChat extends Bird{
         document.body.append(node);
 
 
+    }
+
+    limite(){
+        this.plafond = Math.floor(window.innerHeight/216);
+        this.sol = window.innerHeight - Math.floor(window.innerHeight/10);
+        this.mur_droit = Math.floor(window.innerWidth/384);
+        this.mur_gauche = window.innerWidth - Math.floor(window.innerWidth/50);
     }
 }

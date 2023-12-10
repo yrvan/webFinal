@@ -10,7 +10,17 @@
             "reAttach": true,
             "name": "Launch localhost",
             "url": "http://localhost:5500/client/",
-            "webRoot": "${workspaceFolder}"
+            "webRoot": "${workspaceFolder}",
+            "pathMappings": [
+                {
+                    "url": "webpack://chat",
+                    "path": "${workspaceFolder}"
+                },
+                {
+                    "url": "webpack://chat",
+                    "path": "${workspaceFolder}"
+                }
+            ]
         },
         {
             "type": "chrome",

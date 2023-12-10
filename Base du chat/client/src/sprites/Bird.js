@@ -8,7 +8,7 @@ export default class Bird{
     constructor(node) {
         
         this.node = node;
-        this.colors = Bird.YELLOW_BIRD.split;
+        this.color = Bird.YELLOW_BIRD;
         this.frame = 0
 
         this.lastUpdateTime = Date.now();
@@ -18,13 +18,10 @@ export default class Bird{
         this.isFlying = true;
         this.y;
         this.x;
-        this.autoStabilization; //contiendras le timer qui remet bird stable apres une montée ou descente  
-        this.sol = window.innerHeight-80;//redefini dans tick() pur une meilleur flexibilité
+        this.autoStabilization; //contiendras le timer qui remet bird stable apres une montée ou descente 
 
-        this.speedx = 20;
-        this.speedy = 15;
-        this.velocityX = 0.5; 
         this.velocityY = 0.2; 
+
 
 
         this.sens = {
@@ -42,11 +39,11 @@ export default class Bird{
 
         this.node.classList.add('bird');
 
-        this.node.onclick = ()=>{
+        this.node.onmouseover = ()=>{
             if(this.isFlying){this.isFlying = false;}
         }
     }
-        
+    
 
     move(key){
         let x = this.x;
@@ -72,7 +69,7 @@ export default class Bird{
 
     updateMove(x,y){
         if(this.x != x){
-            if (x >= 5 && x <= window.innerWidth - 50){
+            if (x >= this.mur_droit && x <= this.mur_gauche){
 
                 if(x< this.x){
                     if(this.direction != this.sens["gauche"]){
@@ -87,13 +84,13 @@ export default class Bird{
                 this.x = x;
                 this.node.style.transform = this.direction + this.sens["stable"];
             }
-        }
-        
+         }
+
         if(this.y != y){
             clearTimeout(this.autoStabilization);
             this.autoStabilization = setTimeout(()=>{this.node.style.transform = this.direction+this.sens["stable"];}, 500);
 
-            if (y >=5 && y <= this.sol){
+            if (y >=this.plafond && y <= this.sol){
                 if (y < this.y){
                     if(!this.node.style.transform.includes(this.sens["haut"])){
                         if (!this.node.style.transform.includes(this.sens["stable"])){
@@ -117,12 +114,12 @@ export default class Bird{
         }
     }
 
-    deathMove(){
+    fall(){
         this.y += this.speedy;
         this.speedy += this.velocityY;
 
         if (this.y > this.sol) {
-            this.y = this.sol; // Empêcher l'objet de passer à travers le sol
+            this.y = this.sol; 
             this.speedy = -this.speedy * 0.1; // Rebondir avec une perte d'énergie
             this.speedx *= 0.85;
         }
@@ -162,8 +159,8 @@ export default class Bird{
         if(!this.node.style.backgroundImage.includes("deadBirdFrame")){
             this.etatMort();
         }
-        if (this.speedx > 0){this.deathMove();}
-        setInterval(()=>{
+        if (this.speedx > 0){this.fall();}
+        setTimeout(()=>{
             if(this.speedx == 0){
                 if (this.opacity > 0) {
                     this.opacity -= 0.01;
@@ -179,7 +176,8 @@ export default class Bird{
     }    
 
     tick(){
-        this.sol = window.innerHeight-80;
+        this.limite();
+
         this.node.style.top = this.y+"px";
         this.node.style.left = this.x +"px";
 
@@ -190,12 +188,5 @@ export default class Bird{
         }
     }    
 }
-
-
-
- class BirdIndex extends Bird{
-    constructor(node) {}
-}
-
 
 
